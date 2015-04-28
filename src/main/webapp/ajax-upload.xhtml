@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<title>Ajax Upload Version</title>
+	<SCRIPT type="text/javascript">
+		function statusUpdate(data) {
+			var statusArea = document.getElementById("status");
+			var text = statusArea.value;
+			text = text + "Name: " + data.source.id;
+			if (data.type === "event") {
+				text = text + " Event: " + data.status + " ";
+			}
+			statusArea.value = data.status;
+		}
+	</SCRIPT>
+</h:head>
+<h:body>
+
+	<h:form enctype="multipart/form-data">
+		<h:inputFile value="#{fileuploadBean.file}" />
+		<!--  -->
+		<h:commandButton value="Upload">
+			<f:ajax execute="@all" render="@all" onevent="statusUpdate" />
+		</h:commandButton>
+
+	</h:form>
+
+	<TEXTAREA id="status" rows="10" cols="40" readonly="readonly" />
+
+</h:body>
+</html>

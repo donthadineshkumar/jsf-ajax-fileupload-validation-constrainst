@@ -1,0 +1,21 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:h="http://java.sun.com/jsf/html">
+<head>
+<title>Fileupload</title>
+</head>
+<body>
+<h:form enctype="multipart/form-data">
+	<h:commandButton  value="Ajax Upload" action="/ajax-upload"/>
+</h:form>
+
+<h:form enctype="multipart/form-data"> 
+	<h:inputFile value="#{fileuploadBean.file}" />
+	<h:commandButton  value="Upload"/>
+	
+	<h3>File Contents</h3>
+	<h:outputText  value="#{fileuploadBean.text}"/>	
+
+</h:form>
+</body>
+</html>
